@@ -31,8 +31,8 @@ function App() {
       {/* exo 3 */}
       <h1>Exo 3</h1>
       <div className="exo3">
-        <CompteurExoTrois value={2} />
-        <CompteurExoTrois value={6} />
+        <CompteurExoTrois value={count} />
+        <CompteurExoTrois value={count} />
         <button onClick={handleIncrementCompteur}>+</button>
       </div>
 

@@ -4,13 +4,44 @@ import viteLogo from '/vite.svg'
 import CompteurExoUn from './components/CompteurExoUn'
 import CompteurExoTrois from './components/CompteurExoTrois'
 import CompteurExoQuatre from './components/CompteurExoQuatre'
+import CompteurExoCinq from './components/CompteurExoCinq'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [countExoCinqHaut, setCountExoCinqHaut] = useState(0)
+  const [countExoCinqBas, setCountExoCinqBas] = useState(0)
 
   const handleIncrementCompteur = useCallback(
     () => { setCount(count + 1) },
     [count]
+  );
+
+  const handleIncrementCompteurCinq = useCallback(
+    () => { 
+      setCountExoCinqHaut(countExoCinqHaut + 1) 
+      setCountExoCinqBas(countExoCinqBas + 1) 
+    },
+    [countExoCinqHaut, countExoCinqBas]
+  );
+
+  const handleDecrementCompteurCinqHaut = useCallback(
+    () => { setCountExoCinqHaut(countExoCinqHaut - 1) },
+    [countExoCinqHaut]
+  );
+
+  const handleDecrementCompteurCinqBas = useCallback(
+    () => { setCountExoCinqBas(countExoCinqBas - 1) },
+    [countExoCinqBas]
+  );
+
+  const handleIncrementCompteurCinqHaut = useCallback(
+    () => { setCountExoCinqHaut(countExoCinqHaut + 1) },
+    [countExoCinqHaut]
+  );
+
+  const handleIncrementCompteurCinqBas = useCallback(
+    () => { setCountExoCinqBas(countExoCinqBas + 1) },
+    [countExoCinqBas]
   );
 
   return (
@@ -42,6 +73,24 @@ function App() {
         <CompteurExoQuatre value={count} />
         <CompteurExoQuatre value={count} />
         <button onClick={handleIncrementCompteur}>+</button>
+      </div>
+
+      {/* exo 4 */}
+      <h1>Exo 5</h1>
+      <div className="exo4">
+        <CompteurExoCinq 
+          value={countExoCinqHaut}
+          onIncrement={handleIncrementCompteurCinqHaut} 
+          onDecrement={handleDecrementCompteurCinqHaut}
+        />
+        <CompteurExoCinq
+          value={countExoCinqBas} 
+          onIncrement={handleIncrementCompteurCinqBas} 
+          onDecrement={handleDecrementCompteurCinqBas}
+        />
+        <button onClick={handleIncrementCompteurCinq}>+</button>
+
+        <p>sum : {countExoCinqBas + countExoCinqHaut}</p>
       </div>
     </>
   )
